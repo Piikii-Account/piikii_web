@@ -1,3 +1,4 @@
+import { ScheduleTypeGroupResponse } from "@/apis/place/types/dto";
 import { VoteResultByScheduleResponseDto } from "@/apis/vote/types/dto";
 import {
   ColumnsType,
@@ -20,12 +21,14 @@ export interface CardInfoProps {
   rating?: string;
   reviewCount?: number;
   voteCount?: number;
+  totalVoteCount?: number;
   images: string[];
   info?: { label: string; value: string }[];
   onButtonClick?: () => void;
   noShadow?: boolean;
   cardClassName?: string;
   selected?: boolean;
+  category?: number;
 }
 
 export interface ImgProps {
