@@ -15,6 +15,8 @@ export const CardWithImage: React.FC<CardInfoProps> = ({
   info,
   noShadow,
   cardClassName,
+  cardButtonClassName,
+  customStyle = {},
 }) => {
   const originLogoSrc = React.useMemo(
     () =>
@@ -25,10 +27,11 @@ export const CardWithImage: React.FC<CardInfoProps> = ({
   return (
     <Card
       className={cn(
-        "flex flex-col items-center w-[335px] max-h-[372px] py-[24px] rounded-xl border-0",
+        "flex flex-col items-center w-[335px] max-h-[372px] py-[24px] rounded-xl border-0 bg-primary-50",
         noShadow && "shadow-none",
         cardClassName
       )}
+      style={customStyle}
     >
       <div className="flex flex-col w-[295px] h-[139px]">
         <div className="flex gap-x-[8px]">
@@ -55,15 +58,15 @@ export const CardWithImage: React.FC<CardInfoProps> = ({
             </div>
           </CardHeader>
         </div>
-        <div className="flex flex-row gap-x-[9px] py-[15px]">
+        <div className="flex flex-row w-[294px] h-[92px] gap-x-[9px] py-[15px]">
           {images.map((src, index) => (
             <Image
               key={index}
               src={src}
-              className="rounded-lg"
+              className="rounded-lg w-[92px] h-[92px]"
               alt={`food${index + 1}`}
-              width={100}
-              height={100}
+              width={92}
+              height={92}
               priority
             />
           ))}
@@ -81,7 +84,10 @@ export const CardWithImage: React.FC<CardInfoProps> = ({
           </div>
         ))}
         <button
-          className="flex flex-row mt-[12px] items-center justify-center w-[295px] h-[42px] bg-[#F9FAFB] py-[12px] px-[111px] rounded-2xl gap-x-[4px]"
+          className={cn(
+            "flex flex-row mt-[12px] items-center justify-center w-[295px] h-[42px] bg-primary-150 py-[12px] px-[111px] rounded-2xl gap-x-[4px]",
+            cardButtonClassName
+          )}
           onClick={() => (link ? window.open(link, "_blank") : null)}
         >
           <div className="h-[18px] opacity-80 text-[12px] font-semibold">
